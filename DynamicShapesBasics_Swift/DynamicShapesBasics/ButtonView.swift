@@ -18,6 +18,12 @@ class ButtonView: UIView {
         }
     }
 
+    @IBInspectable var isHighlighted: Bool = false {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+
     private var imageView: UIImageView!
 
 
@@ -43,11 +49,12 @@ class ButtonView: UIView {
 
 
 
+
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
 
-        JLXStyleKit.drawBubbleButton(frame: self.bounds)
+        isHighlighted ? JLXStyleKit.drawBubbleHighlightImageView(frame: self.bounds) : JLXStyleKit.drawBubbleImageView(frame: self.bounds)
     }
 
     override func layoutSubviews() {

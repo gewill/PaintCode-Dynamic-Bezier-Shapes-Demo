@@ -14,9 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = UIColor.white
 
-
-        b = ButtonView(frame: CGRect(x: 100, y: 100, width: 38, height: 44))
+        b = ButtonView(frame: CGRect(x: 100, y: 100, width: 38 * 4, height: 44 * 4))
         b.image = UIImage(named: "bg")
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.bClicked))
         b.addGestureRecognizer(tap)
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
 
     func bClicked() {
         print(#function)
+        b.isHighlighted = !b.isHighlighted
     }
 
 }

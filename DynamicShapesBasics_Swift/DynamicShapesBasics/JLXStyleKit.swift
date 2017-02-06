@@ -34,7 +34,7 @@ public class JLXStyleKit : NSObject {
 
     //// Drawing Methods
 
-    public dynamic class func drawBubbleButton(frame: CGRect = CGRect(x: 0, y: 56, width: 38, height: 44)) {
+    public dynamic class func drawBubbleHighlightImageView(frame: CGRect = CGRect(x: 0, y: 56, width: 38, height: 44)) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
 
@@ -71,6 +71,28 @@ public class JLXStyleKit : NSObject {
         bezier2Path.close()
         UIColor.white.setFill()
         bezier2Path.fill()
+    }
+
+    public dynamic class func drawBubbleImageView(frame: CGRect = CGRect(x: 0, y: 56, width: 38, height: 44)) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()!
+
+        //// Bezier 2 Drawing
+        let bezier2Path = UIBezierPath()
+        bezier2Path.move(to: CGPoint(x: frame.minX + 0.97368 * frame.width, y: frame.minY + 0.43329 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.58578 * frame.width, y: frame.minY + 0.83713 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.97368 * frame.width, y: frame.minY + 0.63465 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.80644 * frame.width, y: frame.minY + 0.80215 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.50000 * frame.width, y: frame.minY + 0.96591 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.55831 * frame.width, y: frame.minY + 0.87837 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.50000 * frame.width, y: frame.minY + 0.96591 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.41422 * frame.width, y: frame.minY + 0.83713 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.50000 * frame.width, y: frame.minY + 0.96591 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.44169 * frame.width, y: frame.minY + 0.87837 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.02632 * frame.width, y: frame.minY + 0.43329 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.19356 * frame.width, y: frame.minY + 0.80215 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.02632 * frame.width, y: frame.minY + 0.63465 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.21771 * frame.width, y: frame.minY + 0.10357 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.02632 * frame.width, y: frame.minY + 0.29822 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.10156 * frame.width, y: frame.minY + 0.17839 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.50000 * frame.width, y: frame.minY + 0.02273 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.29654 * frame.width, y: frame.minY + 0.05278 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.39422 * frame.width, y: frame.minY + 0.02273 * frame.height))
+        bezier2Path.addCurve(to: CGPoint(x: frame.minX + 0.97368 * frame.width, y: frame.minY + 0.43329 * frame.height), controlPoint1: CGPoint(x: frame.minX + 0.76161 * frame.width, y: frame.minY + 0.02273 * frame.height), controlPoint2: CGPoint(x: frame.minX + 0.97368 * frame.width, y: frame.minY + 0.20654 * frame.height))
+        bezier2Path.close()
+        context.saveGState()
+        context.setShadow(offset: JLXStyleKit.littleShadow.shadowOffset, blur: JLXStyleKit.littleShadow.shadowBlurRadius, color: (JLXStyleKit.littleShadow.shadowColor as! UIColor).cgColor)
+        UIColor.white.setFill()
+        bezier2Path.fill()
+        context.restoreGState()
     }
 
 }
