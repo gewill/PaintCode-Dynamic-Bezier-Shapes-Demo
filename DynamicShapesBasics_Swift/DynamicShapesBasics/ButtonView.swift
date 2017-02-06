@@ -8,21 +8,41 @@
 
 import UIKit
 
+@IBDesignable
 class ButtonView: UIView {
 
-    var image: UIImage? {
+
+    @IBInspectable var image: UIImage? {
         didSet {
-            if imageView == nil {
-                imageView = UIImageView()
-                imageView?.backgroundColor = .clear
-                imageView?.layer.masksToBounds = true
-                self.insertSubview(imageView!, at: 0)
-            }
             imageView?.image = image
         }
     }
 
-    private var imageView: UIImageView?
+    private var imageView: UIImageView!
+
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupViews()
+    }
+
+    private func setupViews() {
+
+        self.backgroundColor = UIColor.clear
+
+        imageView = UIImageView()
+        imageView.backgroundColor = .clear
+        imageView.layer.masksToBounds = true
+        self.insertSubview(imageView, at: 0)
+    }
+
+
+
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
@@ -34,8 +54,8 @@ class ButtonView: UIView {
         super.layoutSubviews()
 
 //        imageView?.frame = CGRect(x: self.bounds.width * 1 / 38.0, y: self.bounds.width * 1 / 38.0, width: self.bounds.width * 36 / 38.0, height: self.bounds.width * 36 / 38.0)
-        imageView?.frame = CGRect(x: self.bounds.width * 0.5 / 38.0, y: self.bounds.width * 0.5 / 38.0, width: self.bounds.width * 37 / 38.0, height: self.bounds.width * 37 / 38.0)
-        imageView?.layer.cornerRadius = bounds.width / 2.0
+        imageView.frame = CGRect(x: self.bounds.width * 0.5 / 38.0, y: self.bounds.width * 0.5 / 38.0, width: self.bounds.width * 37 / 38.0, height: self.bounds.width * 37 / 38.0)
+        imageView.layer.cornerRadius = bounds.width / 2.0
     }
 
 

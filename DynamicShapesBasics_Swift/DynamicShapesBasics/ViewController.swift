@@ -18,7 +18,6 @@ class ViewController: UIViewController {
 
         b = ButtonView(frame: CGRect(x: 100, y: 100, width: 38, height: 44))
         b.image = UIImage(named: "bg")
-        b.backgroundColor = .clear
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.bClicked))
         b.addGestureRecognizer(tap)
         b.isUserInteractionEnabled = true
